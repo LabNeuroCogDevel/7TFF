@@ -16,3 +16,5 @@ fi
 ./001_copy_raw_oacres.bash
 ./010_link_and_bids.bash
 ./011_copy_bids_oacres.bash
+./020_preproc.bash
+./030_FS.bash
