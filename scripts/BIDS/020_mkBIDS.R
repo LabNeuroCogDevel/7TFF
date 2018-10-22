@@ -13,7 +13,7 @@ write_and_note <- function(f, cmd) {
    }
 }
 
-dirlist <- Sys.glob("rawlinks/*FF/*/")
+dirlist <- append(Sys.glob("rawlinks/*FF/*/"),Sys.glob("rawlinks/*FF[1-9]/*/"))
 
 info <-
    lapply( strsplit(dirlist, "[/_]"),
@@ -66,7 +66,9 @@ proc$file <- sprintf("%s/%s.nii.gz", proc$outdir, proc$name)
 proc$cmd <- sprintf("dcm2niix -o %s -f %s %s",
                     proc$outdir, proc$name, proc$indir)
 
-print(proc)
+#print.data.frame(proc, row.names=F)
+proc %>% group_by(id) %>% tally() %>% print.data.frame(row.names=F)
+
 # create directories and nifti files
 discard_dir <-
   lapply(proc$outdir, function(x) dir.exists(x) || dir.create(x, recursive=T) )

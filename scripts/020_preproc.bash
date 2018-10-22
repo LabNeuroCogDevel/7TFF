@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-set -euo pipefail
-
+set -e
+source $HOME/.bashrc
+set -uo pipefail
 #
 # preprocess as lncd
 #

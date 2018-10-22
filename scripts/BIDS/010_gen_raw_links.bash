@@ -43,7 +43,7 @@ in_out() {
 link_glob(){
   [ -z "$2" ] && echo "link_glob needs second argument" >&2 && return
 
-  haven=$(ls $2 &2>/dev/null|wc -l)
+  haven=$(ls $2 2>/dev/null|wc -l)
   if [ -d "$2" ]; then 
      expectn=$(echo $2|cut -f3 -d_) 
      echo "already have $2 ($haven/$expectn files)" 
