@@ -11,7 +11,7 @@ cd $(dirname $0)
 # 20180316FF/20180316FFDCMALL
 # 20180720FF/20180720FF
 #for d in /Volumes/Hera/Raw/MRprojects/Other/*{FF,FF[0-9]}/*DCM*/; do 
-find /Volumes/Hera/Raw/MRprojects/Other/*{FF,FF[0-9]}/ -maxdepth 1 -type d \( -iname '*DCM*' -or -iname '*FF*' \)|
+find /Volumes/Hera/Raw/MRprojects/Other/FF/*{FF,FF[0-9]}/ -maxdepth 1 -type d \( -iname '*DCM*' -or -iname '*FF*' \)|
  while read d; do 
    # skip if too few (might have a dicom mprage only directory)
    needatleast=1000

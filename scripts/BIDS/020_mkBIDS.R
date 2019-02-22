@@ -13,7 +13,7 @@ write_and_note <- function(f, cmd) {
    }
 }
 
-dirlist <- append(Sys.glob("rawlinks/*FF/*/"),Sys.glob("rawlinks/*FF[1-9]/*/"))
+dirlist <- append(Sys.glob("rawlinks/*FF/*/"), Sys.glob("rawlinks/*FF[1-9]/*/"))
 
 info <-
    lapply( strsplit(dirlist, "[/_]"),

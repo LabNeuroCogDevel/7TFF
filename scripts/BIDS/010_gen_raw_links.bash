@@ -25,10 +25,11 @@ in_out() {
   [ -z "$1" -o ! -d "$1" ] && echo "bad args to in_out dcmdir skipcars" >&2 && return
   cd "$1" 
   # only compare e.g. "./11451_20180216.MR.TIEJUN_JREF-LUNA.0002." 
-  find -type f | sed 's:^./::' |  cut -f1-4 -d. | sort | uniq -c |
+  find -type f -not -iname '*.nii' | sed 's:^./::' |  cut -f1-4 -d. | sort | uniq -c |
   while read cnt filepart; do 
      seqno=${filepart: -4}
      exampledcm=$(ls $filepart*|sed 1q)
+     echo $exampledcm >&2
      prtcl=$(dicom_hinfo -no_name -tag 0008,103e $exampledcm|tr -cs '[\nA-Za-z0-9]' -)
      dirname=${seqno}_${prtcl}_$cnt
      # sanity check
